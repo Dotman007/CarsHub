@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CarsHub.Models.Car>
+
+@{
+    ViewBag.Title = "ViewCars";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+@if(Model.Count() == 0)
+{
+    <br />
+    <br />
+<br />
+    <h2>
+        No Cars Available
+    </h2>
+}
+else
+{
+    
+
+<h2 style="text-align: center; color: #00ff90; font-weight: bolder">
+    Available Cars
+</h2>
+<br />
+<h4 style="float:right" class="badge">No of Cars: @Model.Count()</h4>
+
+
+<br /><br />
+<table class="table table-striped table-bordered table-hover" style="color:#00ff90;font-weight:bolder">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FrontView)
+        </th>
+        <th>
+            Car Details
+        </th>
+        <th>
+
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+
+            <td>
+                <img src="@string.Format("/Uploads/{0}",@item.FrontView)" width="250" height="250" class="img-rounded img-responsive" />
+            </td>
+            <td>
+                <label>Brand:</label> @Html.DisplayFor(modelItem => item.Brand.Brand_Name)
+                <br />
+
+                <label>Company:</label> @Html.DisplayFor(modelItem => item.Dealer.CompanyName)
+                <br />
+
+                <label>Price:</label> $@Html.DisplayFor(modelItem => item.Price)
+                <br />
+                <label>Car Model:</label> @Html.DisplayFor(modelItem => item.CarModel)
+                <br />
+                <label>Milage:</label> @Html.DisplayFor(modelItem => item.Milage)
+                <br />
+                <label>Year:</label> @Html.DisplayFor(modelItem => item.Year)
+                <br />
+                <label>Condition:</label> @Html.DisplayFor(modelItem => item.Condition)
+            </td>
+
+            <td>
+
+                <a href="/Car/CarDetails/@item.CarId" class="btn btn-primary">View Details</a>
+            </td>
+        </tr>
+}
+
+</table>
+}

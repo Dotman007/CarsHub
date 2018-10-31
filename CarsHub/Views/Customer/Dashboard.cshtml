@@ -1,0 +1,43 @@
+﻿@model CarsHub.Models.Customer
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div style="text-align: center">
+    <h2 class="h2-responsive"><u>@Html.DisplayFor(model => model.Email) (Dashboard)</u></h2><br />
+</div>
+
+<ul class="list-group span6" >
+    <li class="list-group-item">
+        <b>@Html.DisplayName("UserName: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.UserName)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Email: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.Email)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Telephone: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.Telephone)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Address: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.Address)</span>
+    </li>
+
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Country: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.Country.CountryName)</span>
+    </li>
+
+    
+    
+    @*<li class="list-group-item">
+        <b>@Html.DisplayName("Password: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.Password)</span>
+    </li>*@
+</ul>
+
+@*<p>
+    <br />@Html.ActionLink("Change Password", "ChangePassword", new { id = Model.CustomerId }, new { @class = "btn btn-primary" })
+</p>*@
+
+
+
+

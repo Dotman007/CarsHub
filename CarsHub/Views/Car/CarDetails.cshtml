@@ -1,0 +1,101 @@
+﻿@model CarsHub.Models.Car
+
+@{
+    ViewBag.Title = "CarDetails";
+    Layout = "~/Views/Shared/_LayoutDetails.cshtml";
+}
+<div id="home" class="w3ls-banner " style="background-color:white">
+    <!-- header -->
+    <div class="header-w3layouts">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" style="background-color:royalblue">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Car Auction</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1 class="">
+                        <a href="#">
+                            <img src="~/Content/carbook3.png" width="60" height="60" />
+                        </a>
+                    </h1>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse" style="font-family:Candara;font-weight:bolder;color:white">
+                    <ul class="nav navbar-nav navbar-right cl-effect-15" >
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li style="color:white">
+                            <a href="/Customer/Dashboard" style="color:white"><span class="glyphicon glyphicon-user"></span>&nbsp;Profile</a>
+                        </li>
+                        <li style="color:white">
+                            <a href="/Car/ViewCars" style="color: white"><span class="glyphicon glyphicon-tags"></span>&nbsp;View Cars</a>
+                        </li>
+
+                        <li style="color:white">
+                            <a href="/Car/MyBookedCar" style="color:white"><span class="glyphicon glyphicon-home"></span>&nbsp;View Ordered Car</a>
+                        </li>
+                        <li style="color:white">
+                            <a href="/Customer/CustomerLogin" style="color:white"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+    </div>
+
+   
+    <div id="blog" class="blog gallery" style="background-color:royalblue">
+      
+        <div class="container" style="background-color:white;border-radius:3px">
+            <br />
+            <br />
+            <div>
+                <h3 style="text-align:center;color:white;font-family:Candara;font-weight:bolder">
+                    <u>@Html.DisplayFor(modelItem => modelItem.CarModel) Details</u>
+                </h3>
+            </div>
+            <h3 class="agileits-title"><span class=""> </span></h3>
+            <div class="blog-agileinfo">
+                <div class="col-md-7 blog-w3grid-img">
+                    <a href="#myModal" data-toggle="modal" class="wthree-blogimg" style="border-radius:5px">
+                        <img src="@string.Format("/Uploads/{0}",@Model.FrontView)" class="img-responsive" />
+
+                        @*<img src="~/images/g1.jpg" class="img-responsive" alt="" />*@
+                    </a>
+                </div>
+                <div class="col-md-5 blog-w3grid-text" style="color:black;font-family:Candara;border-radius:4px">
+                    <h4 style="color:royalblue; font-family:Candara"><a href="#myModal" data-toggle="modal" style="font-family:Candara">@Html.DisplayFor(model => model.Brand.Brand_Name) @Html.DisplayFor(model => model.CarModel)</a></h4>
+                    <br />
+                    <h5>By <a href="#" style="font-family:Candara"> <label> @String.Format("{0}", Model.Dealer.CompanyName)</label></a> </h5>
+                    <br />
+                    <p style="color:black;font-family:Candara">Brand: <label> @String.Format("{0}", Model.Brand.Brand_Name)</label></p>
+                    <p style="color:black;font-family:Candara">Dealer: <label> @String.Format("{0}", Model.Dealer.CompanyName)</label></p>
+                    <p style="color:black;font-family:Candara">Model: <label> @String.Format("{0}", Model.CarModel)</label></p>
+                    <p style="color:black;font-family:Candara">Year: <label> @String.Format("{0}", Model.Year)</label></p> 
+                    <p style="color:black;font-family:Candara">Condition: <label> @String.Format("{0}", Model.Condition)</label></p>
+                    <p style="color:black;font-family:Candara">Price: <label> @String.Format("${0}", Model.Price)</label></p>
+                    <p style="color:black;font-family:Candara">Time Posted: <label>@String.Format("{0:T}", Model.ActualTime)</label></p>
+                    <p style="color:black;font-family:Candara">Date Posted: <label>@String.Format("{0:D}", Model.ActualTime)</label></p>
+
+                    <br />
+                    <p style="font-family:Candara;font-weight:bolder">
+                        @Html.ActionLink("Make Order", "OrderCar", new { id = Model.CarId }, new { @class = "btn btn-success" }) |
+                        <a href="/Car/ViewCars" class="btn btn-primary">Back to List</a>
+
+                    </p>
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

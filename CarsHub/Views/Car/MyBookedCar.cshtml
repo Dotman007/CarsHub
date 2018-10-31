@@ -1,0 +1,121 @@
+﻿@model IEnumerable<CarsHub.Models.Car>
+
+@{
+    ViewBag.Title = "MyBookedCar";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+@if(Model.Count() == 0)
+{
+    <br />
+    <br />
+     <br />
+    <br />
+     <br />
+    <br />
+    <h2 style="text-align: center; color: #00ff90">No Car Booked Yet</h2>
+}
+else
+{
+    
+<h3 style="float:right" class="badge">No of Cars: @Model.Count()</h3>
+    <br />
+    <br />
+<h2 style="text-align: center; color: #00ff90">List of Booked Cars</h2>
+    <br />
+    <br />
+
+
+<table class="table table-striped table-bordered table-hover" style=" color: #00ff90; font-weight: bolder">
+    <tr>
+        <th>
+            <label>Brand</label>
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Customer.UserName)
+            </th>*@
+        <th>
+            Company
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Milage
+        </th>
+        <th>
+           Year
+        </th>
+        <th>
+            Condition
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Book
+        </th>
+        <th>
+             Time
+        </th>
+        <th>
+           Date
+        </th>
+
+        @*<th>
+               Ordered Time
+            </th>*@
+
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.Brand_Name)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Customer.UserName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Dealer.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Milage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Condition)
+            </td>
+            <td>
+                <img src="@string.Format("/Uploads/{0}",@item.FrontView)" alt="@item.FrontView" class="span12" style="height:80px;width:80px" />
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book)
+            </td>
+            <td>
+                @string.Format("{0:T}",item.BookedDate)
+            </td>
+
+            <td>
+                @string.Format("{0:D}", item.BookedDate)
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.BookTime)
+                </td>*@
+
+        </tr>
+}
+
+</table>
+}

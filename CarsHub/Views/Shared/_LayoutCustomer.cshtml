@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarBook</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="~/Content/dataTables.bootstrap.min.css">
+
+
+
+    <style>
+        .left-div {
+            margin-top: 27px;
+        }
+
+        .login-icon {
+            height: 60px;
+            width: 60px;
+            padding: 11px;
+            border-radius: 50%;
+            font-size: 30px;
+            color: #fff;
+            text-align: center;
+            background-color: #F0677C;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+        }
+
+        #admin-responsive {
+            background-color: white;
+            padding: 10px 10px 1px 10px;
+            width:100%;
+        }
+
+        #responsive {
+            background-color: white;
+            padding: 10px;
+            width:100%;
+        }
+
+        #myNavBrand {
+            color: #00ff90;
+            text-transform: uppercase;
+            font-size: 20px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .navbar-toggle {
+            background-color: #FFF;
+        }
+
+        #headerNavBar {
+            background-color: #00ff90;
+        }
+    </style>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/chocolat.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/flexslider.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    @*<link href="../../css/bootstrap.css" type="text/css" rel
+            ="stylesheet" media="all">
+        <link href="../../css/style.css" type="text/css" rel="stylesheet" media="all">
+        <link href="../../css/font-awesome.css" rel="stylesheet">	<!-- font-awesome icons -->
+        <link rel="stylesheet" href="../../css/flexslider.css" type="text/css" media="screen" />  <!-- flexslider-CSS -->
+        <link rel="stylesheet" href="../../css/chocolat.css" type="text/css" media="screen">*@
+    <!-- //Custom Theme files -->
+    <!-- js -->
+    <script src="~/js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Aguafina+Script" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Petit+Formal+Script" rel="stylesheet">
+</head>
+<body style="background-color: #f2f2f2">
+    <div class="navbar navbar-fixed-top" id="headerNavBar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/Dealer/Dashboard" class="navbar-brand" id="myNavBrand"style="margin:10px"><img src="~/Content/carbook3.png" width="50" height="40" /></a>
+                @*@Html.ActionLink("Cars Hub", "Dashboard", "Dealer", new { area = "" }, new { @class = "navbar-brand", id = "myNavBrand"})*@
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="navbar-collapse collapse">
+                    <div id="admin-responsive">
+                        <div class="alert alert-info text-center" style="color:#00ff90">
+                            @{
+                                HttpContext context = HttpContext.Current;
+                                var name = (string)(context.Session["Username"]);
+                                var email = (string)(context.Session["Email_Address"]);
+                                if (name == null && email == null)
+                                {
+                                    ViewBag.Email = null;
+                                    ViewBag.UserName = null;
+                                    Response.Redirect("/Customer/CustomerLogin");
+                                }
+                                else
+                                {
+                                    ViewBag.UserName = name;
+                                    ViewBag.Email = email;
+                                }
+                            }
+                            <span class="glyphicon glyphicon-user"></span> 
+                            <strong>Welcome: @ViewBag.UserName</strong>
+                            <p style="color:#00ff90"><strong>Email: @ViewBag.Email</strong></p>
+                            <p style="color:#00ff90"><strong>Customer</strong></p>
+                        </div>
+                    </div>
+                    <div id="admin-responsive">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li>
+                                <a href="/Customer/Dashboard" style="color:#00ff90"><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>Profile</strong></a>
+                            </li>
+                            @*<li>
+                                <a href="/Car/Create"><span class="glyphicon glyphicon-tags"></span>&nbsp;Post Car</a>
+                            </li>*@
+                            <li>
+                                <a href="/Car/ViewCars" style="color:#00ff90"><span class="glyphicon glyphicon-road"></span>&nbsp;<strong>View Cars</strong></a>
+                            </li>
+                            <li>
+                                <a href="/Car/MyBookedCar" style="color:#00ff90"><span class="glyphicon glyphicon-book"></span>&nbsp;<strong>My Booked Cars</strong></a>
+                            </li>
+
+                            @*<li>
+        <a href="/Payment/MakeDeposit" style="color:#00ff90"><span class="glyphicon glyphicon-book"></span>&nbsp;<strong>Make Deposit</strong></a>
+    </li>*@
+                            <li>
+                                <a href="/Customer/CustomerLogin" style="color:#00ff90"><span class="glyphicon glyphicon-log-out"></span>&nbsp;<strong>Logout</strong></a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9" >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="responsive">
+                            @RenderBody()
+                            <br /><br /><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="navbar navbar-fixed-bottom" style="background-color: #00ff90; border-radius: 0">
+        <p class="text-center" style="color: #FFFFFF; padding-top: 15px;">&copy; @DateTime.Now.Year - carbook</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript" src=" ~/js/moment.js"></script>
+    <script type="text/javascript" src=" ~/js/moment-timezone-with-data.js"></script>
+    <script type="text/javascript" src="~/js/timer.js"></script>
+    <!-- //timer scripts -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript" src="~/js/move-top.js"></script>
+    <script type="text/javascript" src="~/js/easing.js"></script>
+   
+        <script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/dataTables.bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#zctb').DataTable();
+        });
+    </script>
+</body>
+</html>

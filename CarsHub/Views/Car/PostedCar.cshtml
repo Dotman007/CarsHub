@@ -1,0 +1,92 @@
+﻿@model IEnumerable<CarsHub.Models.Car>
+
+@{
+    ViewBag.Title = "PostedCar";
+    Layout = "~/Views/Shared/_LayoutDealer.cshtml";
+}
+
+<br />
+
+@if(Model.Count() == 0)
+{
+    <div class="badge">
+        You have posted @Model.Count() Car;
+    </div>
+}
+else
+{
+
+    <div class="badge">
+        You have posted @Model.Count() Car(s);
+    </div>
+<h3 style="text-align:center; font-weight:bolder">Posted Car</h3>
+<br />
+<br />
+<table class="table table-striped table-bordered table-hover">
+    <tr style="color:royalblue">
+        <th>
+           Brand
+        </th>
+        <th>
+            Company
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Milage
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Condition
+        </th>
+       
+        <th>
+            Image
+        </th>
+        <th>
+            Price
+        </th>
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr style="color:royalblue">
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand.Brand_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dealer.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Milage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Condition)
+        </td>
+        <td>
+            <img src="@string.Format("/Uploads/{0}",@item.FrontView)" alt="@item.FrontView" class="span12" style="height:80px;width:80px" />
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.Price)
+        </td>
+        @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.CarId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.CarId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.CarId })
+            </td>*@
+    </tr>
+}
+
+</table>
+}

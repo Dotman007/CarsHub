@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Dealer Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<div id="home" class="w3ls-banner ">
+    <!-- header -->
+    <div class="header-w3layouts">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Car Auction</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1 class="">
+                        <a href="/Home/Index">
+                            <img src="~/Content/carbook3.png" width="70" height="70" />
+                        </a>
+                    </h1>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right cl-effect-15">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li><a class="page-scroll" href="/" data-hover="Home" style="font-family:'Franklin Gothic'">Home</a></li>
+                        
+                        <li><a class="page-scroll" href="/Dealer/DealerLogin" data-hover="Login" style="font-family:'Franklin Gothic'">Login</a></li>
+                        <li><a class="page-scroll" href="/Dealer/Create" data-hover="Register" style="font-family:'Franklin Gothic'">Register</a></li>
+
+                        @*<li><a class="page-scroll" href="/Car/ViewCars" data-hover="Gallery" style="font-family:'Franklin Gothic'">Gallery</a></li>*@
+                      
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+    </div>
+    @*</div>*@
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div id="loginorregister" class="features">
+        <div class="container">
+            <div class="w3layouts_skills_grids w3_agileits_contact_grid_right">
+                <div class="col-md-6 col-sm-6 w3features-grids">
+                    <div id="register" class="login-form agileits-right">
+                        <div class="agile-row">
+                            @using (Html.BeginForm("DealerLogin", "Dealer", FormMethod.Post))
+                            {
+
+                                <br />
+                                <h5>Dealer's Login</h5>
+                                <h3 style="color: red; text-align: center">@ViewBag.DealerNotExist</h3>
+                                <div class="login-agileits-top">
+                                    @*<form action="#" method="post">*@
+                                    <p>Registration No. </p>
+                                    <input type="text" id="regNo" name="regNo" class="form-control" placeholder="Enter Your Reg. No">
+                                    <h6 class="text-danger">@ViewBag.RegNo</h6>
+                                    <p>Password</p>
+                                    <input type="password" id="pword" name="pword" class="form-control" placeholder="Enter Your Password">
+                                    <h6 class="text-danger">@ViewBag.Pword</h6>
+                                    <input type="submit" value="Login">
+                                    <br />
+                                    <a href="/Dealer/Create">No Account? Please Sign Up</a>
+                                    @*</form>*@
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+                </div>
+                
+                <div class="clearfix">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    @*</div>*@

@@ -1,0 +1,21 @@
+﻿
+@*@{
+    ViewBag.Title = "Intermission";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}*@
+<div>
+
+    <h2>Intermission</h2>
+
+    @Ajax.ActionLink("All", "All", new AjaxOptions()
+{
+    HttpMethod = "GET",
+    UpdateTargetId = "studentDivs",
+    InsertionMode = InsertionMode.Replace
+})
+
+    <div id="studentDivs">
+
+
+    </div>
+</div>

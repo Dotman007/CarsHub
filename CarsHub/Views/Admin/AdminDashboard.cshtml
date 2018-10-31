@@ -1,0 +1,33 @@
+﻿@model CarsHub.Models.Admin
+
+@{
+    ViewBag.Title = "AdminDashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div style="text-align: center">
+    <h2 class="h2-responsive" style ="color: #b200ff"><u><strong>@Html.DisplayFor(model => model.Username) (Dashboard)</strong></u></h2><br />
+</div>
+
+<ul class="list-group" style="color: #b200ff;font-weight:bolder">
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Full Name: ")</b> <span class="pull-xs-right"><strong>@Html.DisplayFor(model => model.FullName)</strong></span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Email : ")</b> <span class="pull-xs-right"><strong>@Html.DisplayFor(model => model.Email)</strong></span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Username: ")</b> <span class="pull-xs-right"><strong>@Html.DisplayFor(model => model.Username)</strong></span>
+    </li>
+
+</ul>
+
+<p>
+    <br />@Html.ActionLink("Change Password", "ChangePassword", new { id = Model.AdminId }, new { @class = "btn btn-primary" })
+</p>
+
+
+
+   

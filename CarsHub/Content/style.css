@@ -1,0 +1,19 @@
+﻿/*body {
+    background-image: url(img/background.png);
+    background-attachment: fixed;
+}*/
+
+#admin-responsive{
+	background-color: white;
+	padding: 10px 10px 1px 10px;
+}
+
+#responsive{
+	background-color: white;
+	padding: 10px;
+}
+
+.navbar-collapse {
+    padding-right: 1px !important;
+    padding-left: 1px !important;
+}

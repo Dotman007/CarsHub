@@ -1,0 +1,46 @@
+﻿@model CarsHub.Models.Admin
+
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="color:red;text-align:center">@ViewBag.NotInExistence</h3>
+@using (Html.BeginForm("AdminLogin","Admin",FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Login</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username)
+                <h3 style="color:red">@ViewBag.EmptyUserName</h3>
+                
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password)
+                <h3 style="color:red">@ViewBag.EmptyPassword</h3>
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CarsHub.Models.Order>
+
+@{
+    ViewBag.Title = "ViewOrders";
+    Layout = "~/Views/Shared/_LayoutDealer.cshtml";
+}
+
+<h2>Orders</h2>
+
+<p >
+@if (Model.Count() <= 1)
+{
+    <h3 class="jumbotron">
+        You Have @Model.Count() Order.
+    </h3>
+}
+else
+{
+    <h3 class="jumbotron">
+        You Have @Model.Count() Orders.
+    </h3>
+}
+</p>
+<table class="table table-hover table-striped table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.CarModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Dealer.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Book)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.CarModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.Dealer.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Book)
+        </td>
+        <td>
+            @Html.ActionLink("Approve", "ApproveOrder", new { id=item.OrderId }) |
+            
+        </td>
+    </tr>
+}
+
+</table>

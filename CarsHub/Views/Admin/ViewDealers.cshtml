@@ -1,0 +1,86 @@
+﻿@model IEnumerable<CarsHub.Models.Dealer>
+
+@{
+    ViewBag.Title = "ViewDealers";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">List of Dealers</h2>
+
+<br />
+<div>
+    <h3 style="text-align:right" class="badge">
+        @Model.Count() Dealers
+    </h3>
+</div>
+<br />
+<table class="table table-bordered table-striped" style="color: #b200ff;font-weight:bolder">
+    <tr>
+        <th>
+            Company
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Province)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyAddress)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.OfficePhoneNo)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationNo)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Province)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyAddress)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.OfficePhoneNo)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNo)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>*@
+            <td>
+
+                <a href="/Dealer/Edit/@item.DealerId" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>Edit</a>
+                <a href="/Dealer/Details/@item.DealerId" class="btn btn-info"><span class="glyphicon glyphicon-adjust"></span>Details</a>
+                <a href="/Dealer/Delete/@item.DealerId" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Delete</a>
+
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.DealerId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DealerId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DealerId })*@
+            </td>
+        </tr>
+    }
+
+</table>

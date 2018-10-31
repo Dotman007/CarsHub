@@ -1,0 +1,97 @@
+﻿@model IEnumerable<CarsHub.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDealer.cshtml";
+}
+
+<h2>Index</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table table-striped table-hover table-bordered" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand.Brand_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dealer.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Milage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Condition)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.FrontView)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.ActualTime)
+        </th>*@
+       
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand.Brand_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dealer.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Milage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Condition)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.FrontView)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ActualTime - DateTime.Now)
+        </td>*@
+        <td>
+            @*@if(item.Book == true)
+            {
+            @Html.ActionLink("John", "Edit", new { id=item.CarId }) <label>|</label>
+            @Html.ActionLink("Done", "Details", new { id=item.CarId }) <label>|</label>
+            @Html.ActionLink("Did", "Delete", new { id=item.CarId }) 
+            }
+            else
+            {*@ 
+            @Html.ActionLink("Edit", "Edit", new { id=item.CarId })|
+            @Html.ActionLink("Details", "Details", new { id=item.CarId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CarId })
+            }
+        </td>
+    </tr>
+}
+
+</table>

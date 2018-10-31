@@ -1,0 +1,193 @@
+﻿@model CarsHub.Models.Customer
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<div id="home" class="w3ls-banner ">
+    <!-- header -->
+    <div class="header-w3layouts">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Car Auction</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1 class="">
+                        <a href="/Home/Index">
+                            <img src="~/Content/carbook3.png" width="70" height="70" />
+                        </a>
+                    </h1>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right cl-effect-15">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li><a class="page-scroll" href="/" data-hover="Home" style="font-family:'Franklin Gothic'">Home</a></li>
+
+                        <li><a class="page-scroll" href="/Customer/CustomerLogin" data-hover="Login" style="font-family:'Franklin Gothic'">Login</a></li>
+                        <li><a class="page-scroll" href="/Customer/Create" data-hover="Register" style="font-family:'Franklin Gothic'">Register</a></li>
+
+                        <li><a class="page-scroll" href="/Car/ViewCars" data-hover="Gallery" style="font-family:'Franklin Gothic'">Gallery</a></li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+    </div>
+    @*</div>*@
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container" ng-app="myApp" ng-controller="myCtrl">
+        <div class="w3layouts_skills_grids w3features-grids">
+            <div class="col-md-6 col-sm-6 w3features-grids">
+                <div id="register" class="login-form agileits-right">
+                    <div class="agile-row">
+                       
+                        @using (Html.BeginForm("Create", "Customer", FormMethod.Post))
+                        {
+
+                            @Html.AntiForgeryToken()
+                            
+                            <h5>Registration Form</h5>
+                            <div class="login-agileits-top">
+
+
+                                <div class="form-horizontal">
+
+
+                                    <hr />
+                                    @Html.ValidationSummary(true)
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UserName,"Username", new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control col-md-2", @placeholder = "Enter Your UserName" })
+                                            @Html.ValidationMessageFor(model => model.UserName)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control col-md-2", @placeholder = "Enter Your Email" })
+                                            @Html.ValidationMessageFor(model => model.Email)
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.PasswordFor(model => model.Password, new { @class = "form-control col-md-2", @placeholder = "Enter Your Password" })
+                                            @Html.ValidationMessageFor(model => model.Password)
+                                        </div>
+                                    </div>*@
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Telephone, "Telephone",new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.Telephone, new { @class = "form-control col-md-2", @placeholder = "Enter Your Phone No." })
+                                            @Html.ValidationMessageFor(model => model.Telephone)
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control col-md-2", @placeholder = "Enter Your Phone No." })
+                                            @Html.ValidationMessageFor(model => model.Address)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CountryId, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @*<select ng-model="contr"  ng-options="c.CountryId as CountryName for c in country" ng-change="GetStates()">
+                                                <option value="">--Select Country--</option>
+                                            </select>*@
+                                            @Html.DropDownList("CountryId", String.Empty)
+                                            @Html.ValidationMessageFor(model => model.CountryId)
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.State, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @*<select ng-model="state" ng-disabled="!states" ng-options="c.StateId as StateName for c in states">
+                                                <option value="">--Select State--</option>
+                                            </select>*@
+                                            @Html.TextBoxFor(model => model.State, new { @class = "form-control col-md-2", @placeholder = "Enter Your Province." })
+                                            
+                                            @Html.ValidationMessageFor(model => model.State)
+                                        </div>
+                                    </div>
+                                    
+                                 <input type="submit" value="Register">
+
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/Scripts/angular.min.js")
+
+<script type="text/javascript">
+        //Module
+    //var app = angular.module('myApp', []);
+    //    //Controller
+    //app.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
+    //    //http service for getting the countries
+    //    $http({
+    //        method: 'GET',
+    //        url: '/Customer/GetCountry'
+    //    }).
+    //    success(function (data) {
+    //        $scope.country = data;
+    //    });
+
+    //    //http service for getting state
+    //    $scope.GetStates = function()
+    //    {
+    //        if ($scope.contr) {
+    //            $http({
+    //                method: 'POST',
+    //                url: '/Customer/GetStates',
+    //                data: JSON.stringify({ countryId: $scope.contr })
+    //            }).success(function (data) {
+    //                $scope.states = data;
+    //            });
+
+    //        }
+    //        else {
+    //            $scope.states = null;
+    //        }
+    //    }
+    //}]);
+
+        </script>
+        
+    }

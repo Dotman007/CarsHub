@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CarsHub.Models.Brand>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand_Name)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand_Name)
+        </td>
+        
+    </tr>
+}
+
+</table>

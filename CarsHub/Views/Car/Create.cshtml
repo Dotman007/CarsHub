@@ -1,0 +1,84 @@
+﻿@model CarsHub.Models.Car
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutDealer.cshtml";
+}
+
+
+@using (Html.BeginForm("Create", "Car", FormMethod.Post, new {enctype="multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal"  style="color:royalblue">
+        <h3 style="text-align:center;font-weight:bolder">Car Registration</h3>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Brand_Id, "Brand Name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Brand_Id", String.Empty)
+                @Html.ValidationMessageFor(model => model.Brand_Id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CarModel, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CarModel, new { @class = "form-control col-md-2" })
+                @Html.ValidationMessageFor(model => model.CarModel)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Milage, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Milage, new { @class = "form-control col-md-2" })
+                @Html.ValidationMessageFor(model => model.Milage)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Year, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.TextBoxFor(model => model.Year, new { @class = "form-control col-md-2" })
+                @Html.ValidationMessageFor(model => model.Year)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Condition, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Condition, new { @class = "form-control col-md-2" })
+                @Html.ValidationMessageFor(model => model.Condition)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FrontView, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="file" id="imagePath" title="Upload the Front View" />
+                @*@Html.TextBoxFor(model => model.FrontView, new { @class="form-control col-md-2"})*@
+                @Html.ValidationMessageFor(model => model.FrontView)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control col-md-2" })
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Car" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+

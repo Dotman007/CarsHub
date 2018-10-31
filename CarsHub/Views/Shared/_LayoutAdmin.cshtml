@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarBook</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="~/Content/dataTables.bootstrap.min.css">
+
+
+
+    <style>
+        .left-div {
+            margin-top: 27px;
+        }
+
+        .login-icon {
+            height: 60px;
+            width: 60px;
+            padding: 11px;
+            border-radius: 50%;
+            font-size: 30px;
+            color: #fff;
+            text-align: center;
+            background-color: #F0677C;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+        }
+
+        #admin-responsive {
+            background-color: white;
+            padding: 10px 10px 1px 10px;
+        }
+
+        #responsive {
+            background-color: white;
+            padding: 10px;
+        }
+
+        #myNavBrand {
+            color: #b200ff;
+            text-transform: uppercase;
+            font-size: 20px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .navbar-toggle {
+            background-color: #FFF;
+        }
+
+        #headerNavBar {
+            background-color: #b200ff;
+        }
+    </style>
+
+    <!-- //requried-jsfiles-for owl -->
+</head>
+<body style="background-color: #f2f2f2">
+    <div class="navbar navbar-fixed-top" id="headerNavBar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/Admin/AdminDashboard" class="navbar-brand" id="myNavBrand" style="margin:10px"><img src="~/Content/carbook3.png" width="50" height="40" /></a>
+                </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        @*<br />
+        <br />*@
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="navbar-collapse collapse">
+                    <div id="admin-responsive">
+                        <div class="alert alert-info text-center" style="color: #b200ff">
+                            @{
+                                HttpContext context = HttpContext.Current;
+                                var uname = (string)(context.Session["User_Name"]);
+                                var emailad = (string)(context.Session["Email_Ad"]);
+                                if (uname == null && emailad == null)
+                                {
+                                    ViewBag.EmailAddress = null;
+                                    ViewBag.UserName = null;
+                                    Response.Redirect("/Admin/AdminLogin");
+                                }
+                                else
+                                {
+                                    ViewBag.UserName = uname;
+                                    ViewBag.EmailAddress = emailad;
+                                }
+                            }
+                            <span class="glyphicon glyphicon-user"></span> 
+                            
+                            <strong>Welcome: @ViewBag.UserName</strong>
+                            <p><strong>Email: @ViewBag.EmailAddress</strong></p>
+                            <p><strong>Administrator</strong></p>
+                        </div>
+                    </div>
+                    <div id="admin-responsive">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li>
+                                <a href="/Admin/AdminDashboard" style="color: #b200ff"><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>Profile</strong></a>
+                            </li>
+                            @*<li>
+                                    <a href="/Car/Create"><span class="glyphicon glyphicon-tags"></span>&nbsp;Post Car</a>
+                                </li>*@
+                            @*<li>
+                                    <a href="/Car/ViewCars"><span class="glyphicon glyphicon-tags"></span>&nbsp;View Cars</a>
+                                </li>
+                                <li>
+                                    <a href="/Car/MyBookedCar"><span class="glyphicon glyphicon-home"></span>&nbsp;My Booked Cars</a>
+                                </li>*@
+                            <li>
+                                <a href="/Admin/Index" style="color: #b200ff"><span class="glyphicon glyphicon-dashboard"></span>&nbsp; <strong>Admins</strong></a>
+                            </li>
+                            <li>
+                                <a href="/Admin/ViewCustomers" style="color: #b200ff"><span class="glyphicon glyphicon-list"></span>&nbsp;<strong>Customers</strong></a>
+                            </li>
+                            <li>
+                                <a href="/Admin/ViewDealers" style="color: #b200ff"><span class="glyphicon glyphicon-barcode"></span>&nbsp;<strong>Dealers</strong></a>
+                            </li>
+                            <li>
+                                <a href="/Admin/AdminLogin" style="color: #b200ff"><span class="glyphicon glyphicon-log-out"></span>&nbsp;<strong>Logout</strong></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="responsive">
+                            @RenderBody()
+                            <br /><br /><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="navbar navbar-fixed-bottom" style="background-color: #b200ff; border-radius: 0">
+        <p class="text-center" style="color: #FFFFFF; padding-top: 15px;">&copy; @DateTime.Now.Year - carbook</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+  
+   
+    <!-- //for index page weekly sales java script -->
+    <!-- Bootstrap Core JavaScript -->
+    
+    <!-- //Bootstrap Core JavaScript -->
+    <script type="text/javascript" src=" ~/js/moment.js"></script>
+    <script type="text/javascript" src=" ~/js/moment-timezone-with-data.js"></script>
+    <script type="text/javascript" src="~/js/timer.js"></script>
+    <!-- //timer scripts -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript" src="~/js/move-top.js"></script>
+    <script type="text/javascript" src="~/js/easing.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/dataTables.bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#zctb').DataTable();
+        });
+    </script>
+</body>
+</html>

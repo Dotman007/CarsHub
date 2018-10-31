@@ -1,0 +1,45 @@
+﻿@model CarsHub.Models.Dealer
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutDealer.cshtml";
+}
+
+
+
+<div style="text-align: center">
+    <h2 class="h2-responsive"><u>@Html.DisplayFor(model => model.CompanyName) (Dashboard)</u></h2><br />
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Registration No: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.RegistrationNo)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Company Name: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.CompanyName)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Country: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.Country)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Province: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.Province)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Company Address: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.CompanyAddress)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Email : ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.EmailAddress)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Office Contact: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.OfficePhoneNo)</span>
+    </li>
+    <li class="list-group-item">
+        <b>@Html.DisplayName("Password: ")</b> <span class="pull-xs-right">@Html.DisplayFor(model => model.Password)</span>
+    </li>
+</ul>
+
+<p>
+    <br />@Html.ActionLink("Change Password", "ChangePassword", new { id = Model.DealerId }, new { @class = "btn btn-primary" })
+</p>
+
+

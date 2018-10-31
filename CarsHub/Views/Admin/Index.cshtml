@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CarsHub.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">List of Admin</h2>
+<br />
+<div>
+    <h3 class="badge">
+        @Model.Count() Admins
+    </h3>
+</div>
+<p>
+    <a href="/Admin/RegisterAdmin" class="btn btn-success" style="float:right"><span class="glyphicon glyphicon-plus-sign"></span> Register Admin</a> 
+</p>
+<br />
+    <br />
+<table class="table table-striped table-bordered table-hover" style="color: #b200ff;font-weight:bolder">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a href="/Admin/Edit/@item.AdminId" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>Edit</a>
+                <a href="/Admin/Details/@item.AdminId" class="btn btn-info"><span class="glyphicon glyphicon-adjust"></span>Details</a>
+                <a href="/Admin/Delete/@item.AdminId" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Delete</a>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.AdminId }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id=item.AdminId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.AdminId })*@
+            </td>
+        </tr>
+}
+
+</table>

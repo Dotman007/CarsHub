@@ -1,0 +1,131 @@
+﻿@model CarsHub.Models.Dealer
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutCreate.cshtml";
+
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+<div class="container">
+    <div class="w3layouts_skills_grids w3features-grids">
+        <div class="col-md-10 col-sm-10 w3features-grids">
+            <div id="register" class="login-form agileits-right">
+                <div class="agile-row">
+@using (Html.BeginForm("Create", "Dealer", FormMethod.Post))
+ {
+
+    @Html.AntiForgeryToken()
+                    <br />
+                    <h5>Registration  Form</h5>
+                    <div class="login-agileits-top">
+                       
+
+                            <div class="form-horizontal">
+                               
+
+                                <hr />
+                                @Html.ValidationSummary(true)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CompanyName, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control col-md-2", @placeholder = "Enter Your Company Name" })
+                                        @Html.ValidationMessageFor(model => model.CompanyName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Country, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                      
+                                        @Html.TextBoxFor(model => model.Country, new { @class = "form-control col-md-2", @placeholder = "Enter Your Company Address" })
+
+                                       
+                                        @Html.ValidationMessageFor(model => model.Country)
+                                        
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Province, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        
+                                        @Html.TextBoxFor(model => model.Province, new { @class = "form-control col-md-2", @placeholder = "Enter Your Province" })
+                                        @Html.ValidationMessageFor(model => model.Province)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CompanyAddress, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.CompanyAddress, new { @class = "form-control col-md-2", @placeholder = "Enter Your Company Address" })
+                                        @Html.ValidationMessageFor(model => model.CompanyAddress)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control col-md-2", @placeholder = "Enter Your Email Address" })
+                                        @Html.ValidationMessageFor(model => model.EmailAddress)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OfficePhoneNo, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.OfficePhoneNo, new { @class = "form-control col-md-2", @placeholder = "Enter Your Mobile No." })
+                                        @Html.ValidationMessageFor(model => model.OfficePhoneNo)
+                                    </div>
+                                </div>
+                                <input type="submit" value="Register" >
+                               
+                            </div>
+                        
+                    </div>
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#State").prop("disabled", true);
+        $("#Country").change(function () {
+            if ($("#Country").val() != "Select") {
+                var CountryOptions = {};
+                CountryOptions.url = "/Dealer/States";
+                CountryOptions.type = "POST";
+                CountryOptions.data = JSON.stringify({ Country: $("#Country").val() });
+                CountryOptions.datatype = "json";
+                CountryOptions.contentType = "application/json";
+                CountryOptions.success = function (StatesList) {
+                    $("#State").empty();
+                    for (var i = 0; i < StatesList.length; i++) {
+                        $("#State").append("<option>" + StatesList[i] + "</option>");
+                    }
+                    $("#State").prop("disabled", false);
+                };
+                CountryOptions.error = function () { alert("Error in Getting States!!"); };
+                $.ajax(CountryOptions);
+            }
+            else {
+                $("#State").empty();
+                $("#State").prop("disabled", true);
+            }
+        });
+    });
+    </script>
+}

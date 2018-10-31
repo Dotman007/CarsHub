@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarBook</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="~/Content/dataTables.bootstrap.min.css">
+
+
+
+    <style>
+        .left-div {
+            margin-top: 27px;
+        }
+
+        .login-icon {
+            height: 60px;
+            width: 60px;
+            padding: 11px;
+            border-radius: 50%;
+            font-size: 30px;
+            color: #fff;
+            text-align: center;
+            background-color: #F0677C;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+        }
+
+        #admin-responsive {
+            background-color: white;
+            padding: 10px 10px 1px 10px;
+        }
+
+        #responsive {
+            background-color: white;
+            padding: 10px;
+        }
+
+        #myNavBrand {
+            color: #FFFFFF;
+            text-transform: uppercase;
+            font-size: 20px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .navbar-toggle {
+            background-color: #FFF;
+        }
+
+        #headerNavBar {
+            background-color: royalblue;
+        }
+    </style>
+
+</head>
+<body style="background-color: #f2f2f2">
+    <div class="navbar navbar-fixed-top" id="headerNavBar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand" id="myNavBrand"><img src="~/Content/carbook3.png" width="70" height="70" /></a>
+                @*@Html.ActionLink("Cars Hub", "Dashboard", "Dealer", new { area = "" }, new { @class = "navbar-brand", id = "myNavBrand"})*@
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="navbar-collapse collapse">
+                    <div id="admin-responsive">
+                        @*<div class="alert alert-info text-center">*@
+                            @*@{
+                                HttpContext context = HttpContext.Current;
+                                var name = (string)(context.Session["Dealer_Name"]);
+                                var regNo = (string)(context.Session["RegistrationNo"]);
+                                if (name == null && regNo == null)
+                                {
+                                    ViewBag.CompanyName = null;
+                                    ViewBag.RegistrationNo = null;
+                                    Response.Redirect("/Dealer/DealerLogin");
+                                }
+                                else
+                                {
+                                    ViewBag.CompanyName = name;
+                                    ViewBag.RegistrationNo = regNo;
+                                }
+                            }
+                            <span class="glyphicon glyphicon-user"></span> Welcome: @ViewBag.CompanyName
+                            <p>Registration No: @ViewBag.RegistrationNo</p>*@
+                        @*</div>*@
+                    </div>
+                    <br />
+                    <div id="admin-responsive">
+                        <ul class="nav nav-pills nav-stacked">
+                           
+                            <li>
+                                <a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Go Home</a>
+                            </li>
+                            @*<li>
+                                <a href="/"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;</a>
+                            </li>*@
+                            @*<li>
+                                <a href="/Car/PostedCar"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;View Posted Car</a>
+                            </li>
+                            <li>
+                                <a href="/Order/ViewOrders"><span class="glyphicon glyphicon-home"></span>&nbsp;View Ordered Car</a>
+                            </li>*@
+                            @*<li>
+                                <a href="/"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a>
+                            </li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="responsive">
+                            @RenderBody()
+                            <br /><br /><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="navbar navbar-fixed-bottom" style="background-color:royalblue; border-radius: 0">
+        <p class="text-center" style="color: #FFFFFF; padding-top: 15px;">&copy; @DateTime.Now.Year - CarBook</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/dataTables.bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#zctb').DataTable();
+        });
+    </script>
+</body>
+</html>

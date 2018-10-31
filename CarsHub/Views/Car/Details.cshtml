@@ -1,0 +1,79 @@
+﻿@model CarsHub.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutDealer.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Car</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.Brand_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.Brand_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dealer.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dealer.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarModel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarModel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Milage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Milage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Condition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Condition)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FrontView)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FrontView)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CarId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
